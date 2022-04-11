@@ -6,42 +6,60 @@ namespace Day_35AddressBook
     class Program
     {
         static void Main(string[] args)
-        { }
-        //Console.WriteLine("Welcome To The Address Book Problem By Using Linq ");
-        //Management.AddTable();
-
-        public static DataTable productDataTable = new DataTable();
-
-        public static void AddDataIntoDataTable()
         {
-            //UC-8
-            //Adding Fields into the datatable
-            productDataTable.Columns.Add("ProductId", typeof(Int32));
-            productDataTable.Columns.Add("UserId", typeof(Int32));
-            productDataTable.Columns.Add("Rating", typeof(double));
-            productDataTable.Columns.Add("Review", typeof(string));
-            productDataTable.Columns.Add("IsLike", typeof(bool));
+            Console.WriteLine("Hello, Welcome to Address Book Using Linq!");
+            //Creating DataTable for addressbook problem UC1
+            DataTable addressBookTable = new DataTable();
 
-            //Creating rows and Adding data into rows
-            productDataTable.Rows.Add(1, 1, 5, "Excellent", true);
-            productDataTable.Rows.Add(5, 10, 1, "Poor     ", false);
-            productDataTable.Rows.Add(3, 3, 3, "Average  ", true);
-            productDataTable.Rows.Add(3, 6, 5, "Excellent", true);
-            productDataTable.Rows.Add(2, 2, 4, "Nice     ", true);
-            productDataTable.Rows.Add(4, 7, 4, "Nice     ", true);
-            productDataTable.Rows.Add(2, 8, 3, "Average  ", true);
-            productDataTable.Rows.Add(4, 4, 2, "Satisfactory", false);
-            productDataTable.Rows.Add(1, 9, 2, "Satisfactory", false);
-            productDataTable.Rows.Add(9, 5, 1, "Poor     ", false);
+            //adding columns into address book table UC2
+            DataColumn column;
+            DataRow row;
 
-            Console.WriteLine("\nDataTable contents:");
-            foreach (var v in productDataTable.AsEnumerable())
-            {
-                Console.WriteLine($"ProductID:{v.Field<int>("ProductId")}\tUserID:{v.Field<int>("UserId")}\tRating:{v.Field<double>("Rating")}\tReview:{v.Field<string>("Review")}\tIsLike:{v.Field<bool>("IsLike")}");
-            }
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "firstName";
+            addressBookTable.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "lastName";
+            addressBookTable.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "address";
+            addressBookTable.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "city";
+            addressBookTable.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "state";
+            addressBookTable.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int32");
+            column.ColumnName = "zip";
+            addressBookTable.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "phoneNumber";
+            addressBookTable.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "eMail";
+            addressBookTable.Columns.Add(column);
+
+            // Make the first name and mobile no column the primary key column
+            DataColumn[] PrimaryKeyColumns = new DataColumn[2];
+            PrimaryKeyColumns[0] = addressBookTable.Columns["firstName"];
+            PrimaryKeyColumns[1] = addressBookTable.Columns["phoneNumber"];
+            addressBookTable.PrimaryKey = PrimaryKeyColumns;
         }
-
     }
-
 }
