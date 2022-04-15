@@ -12,7 +12,6 @@ namespace Day_35AddressBook
         public static void AddTable()
         {
             DataColumn column;
-            DataRow Row;
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "FirstName";
